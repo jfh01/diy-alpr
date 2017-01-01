@@ -23,6 +23,9 @@ class UTC(tzinfo):
 
 utc = UTC()
 
+def dist_to_str (f):
+	return "{:.0f}/10".format (f * 10)
+
 def deg_to_str (f):
 
 	f=math.fabs(f)
@@ -33,13 +36,8 @@ def deg_to_str (f):
 	min_mod = math.modf(fmin * 60)
 	fmin = min_mod[1]
 	fsec = min_mod[0] * 60
-
+    
 	return "{:03.0f}/1,{:02.0f}/1,{:05.0f}/1000".format(fdeg, fmin, fsec*1000)
-#+   fmin = modf(f, &fdeg);
-#+   fsec = modf(fmin * 60, &fmin);
-#+   fsec *= 60;
-#+   snprintf(buf, buf_size, "%03d/1,%02d/1,%05d/1000", (int)fdeg, (int)fmin, (int)(fsec*1000));
-
 
 class gpspoll (threading.Thread):
 	def __init__(self):
@@ -64,7 +62,6 @@ class gpspoll (threading.Thread):
 		if not(self.session.utc):
 			print "gpspoll:get - no gps"
 			return None
-		print dateutil.parser.parse(self.session.utc)
 	
 		if max_age:
 			age = time.time() - (dateutil.parser.parse(self.session.utc) - datetime.datetime(1970,1,1,0,0,0,0, UTC())).total_seconds()
