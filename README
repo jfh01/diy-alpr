@@ -1,0 +1,41 @@
+diy-aply - An automated license plate reader built w/ Raspberry Pi
+
+REQUIRED HARDWARE
+-----------------
+
+1. Raspberry Pi - Tested Pi 3 Model B
+2. GPS - Tested with w/ AdaFruit GPS Hat and external antenna
+3. Camera - Tested with Raspberry Pi Camera V2
+
+
+SOFTWARE DEPENDENCIES
+---------------------
+
+1. Python 2.7.x
+2. OpenALPR
+3. Non-standard Python libraries: gps, exifread, openalpr, picamera
+
+
+CONFIGURING DIY-ALPR
+--------------------
+
+Edit src/diy-alpr.py. Edit any variables between '## BEGIN DIY-ALPR CONFIG' and '## END DIY-ALPR CONFIG' that need changing
+
+
+RUNNING DIY-APLR
+----------------
+
+   diy-alpr$ python src/diy-alpr.py
+
+If you want to run in background and capture a log file, use:
+
+    diy-alpr$ nohup python src/diy-alpr.py >> work/diy-lpr.log 2>&1 &
+
+The program will output various status information and errors to keep you apprised of its activies.
+
+RUNNING DIY-ALPR ON BOOT
+------------------------
+
+On Raspbian, edit /etc/rc.local and add:
+
+  sudo -u USER_TO_RUN_AS python PATH_TO_DIY_ALPR/src/diy-lpr.py >> PATH_TO_DIY_ALPR/work/diy-lpr.log 2>&1 &
