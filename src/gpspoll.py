@@ -1,6 +1,7 @@
 import gps
 import threading
 import time
+import sys
 import math
 import dateutil.parser
 import datetime
@@ -50,6 +51,7 @@ class gpspoll (threading.Thread):
 
 	def run(self):
 		while(self.running):
+			sys.stdout.flush()
 			self.session.next()
 
 	def stop(self):
@@ -66,8 +68,8 @@ class gpspoll (threading.Thread):
 		if max_age:
 			age = time.time() - (dateutil.parser.parse(self.session.utc) - datetime.datetime(1970,1,1,0,0,0,0, UTC())).total_seconds()
 			if (max_age < age):
-				print "gpspoll:get - gps too old ({}s old)".format(age)
+				print "gpspoll:get - gps too old ({:.2f}s old)".format(age)
 				return None
 		
-		print "gpspoll:get - gps ok ({}s old)".format(time.time() - (dateutil.parser.parse(self.session.utc) - datetime.datetime(1970,1,1,0,0,0,0, UTC())).total_seconds())
+		#print "gpspoll:get - gps ok ({:.2f}s old)".format(time.time() - (dateutil.parser.parse(self.session.utc) - datetime.datetime(1970,1,1,0,0,0,0, UTC())).total_seconds())
 		return self.session.fix
