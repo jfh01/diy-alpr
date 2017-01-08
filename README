@@ -17,9 +17,10 @@ REQUIRED HARDWARE
 
 SOFTWARE DEPENDENCIES
 ---------------------
-1. Python 2.7.x
+1. Python 2.7
 2. OpenALPR
-3. Non-standard Python libraries: gps, exifread, openalpr, picamera
+3. gpsd
+4. Non-standard Python libraries: gps, exifread, openalpr, picamera
 
 CONFIGURING DIY-ALPR
 --------------------
@@ -27,7 +28,11 @@ Edit src/diy-lpr.py. Edit any variables between 'BEGIN DIY-ALPR CONFIG' and 'END
 
 RUNNING DIY-APLR
 ----------------
-   diy-alpr$ python src/diy-lpr.py
+Before you can use DIY-ALPR, you will need to make sure your Raspberry Pi Camera is properly connected. You will also need to have your GPS device installed and working. diy-alpr relies on 'gpsd' to work. Follow the instructions that came with your GPS device (or the gpsd manual) to get this running. If the 'cgps' command isn't returning a GPS fix, then diy-alpr won't work. diy-alpr looks for gpsd at localhost:2947.
+
+Once everything is ready to go, fire up diy-alpr with:
+
+    diy-alpr$ python src/diy-lpr.py
 
 If you want to run in background and capture a log file, use:
 
