@@ -1,0 +1,2 @@
+This directory is where images without a hit are moved after recognition. If a "nohit" directory isn't specified in the config,
+then these images are deleted instead.

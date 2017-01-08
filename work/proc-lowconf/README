@@ -1,0 +1,2 @@
+This directory is where images with a low confidence match are moved after recognition. These images do not qualify as hits,
+but likely contain license plates. May be suitable for manual review.
