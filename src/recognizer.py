@@ -92,8 +92,8 @@ class recognizer (threading.Thread):
             time.sleep(0.05)
             files = sorted(os.listdir(self.source_dir))
 
-            if (len(files) > 0):
-                print "recognizer:run[{}] - found {} files in {}".format(tid, len(files), self.source_dir)
+#            if (len(files) > 0):
+#                print "recognizer:run[{}] - found {} files in {}".format(tid, len(files), self.source_dir)
 
             for file in files:
                 # if we're supposed to be shutting down, then break out of the file processing loop
@@ -105,7 +105,7 @@ class recognizer (threading.Thread):
 
                 # make sure it looks like one of ours
                 if (not(re.match('^\d+(.*)\.jpg$', file))):
-                    if file.startswith(".") or re.search('.lock$', file):
+                    if file == "README" or file.startswith(".") or re.search('.lock$', file):
                         pass # silently ignore lock files and hidden files
                     else: 
                         print "recognizer:run - ignoring file with bad name {}".format(file)
