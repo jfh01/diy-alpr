@@ -2,6 +2,10 @@ diy-aplr - An automated license plate reader built w/ Raspberry Pi
 
 This program is built for Raspberry Pi. It continuously captures photographs of license plates along with current GPS coordinates. The captured photos are analyzed and any license plate numbers that are recognized are output to CSV or/and JSON (along with the time and location of the image) The application is multi-threaded and designed to capture at high speed (3-5 images/sec). The Rapsberry Pi can't recognize as fast as it can capture, so image files are queued up in a capture directory and worked through as fast as the recognizer is able.
 
+LEGAL NOTE
+----------
+Your local laws may have something to say about the use of automated license plate readers. Please learn the law and don't use this software to break it.
+
 COMPONENTS
 ----------
 diy-lpr - main application
