@@ -57,3 +57,15 @@ RUNNING DIY-ALPR ON BOOT
 On Raspbian, edit /etc/rc.local and add:
 
   sudo -u USER_TO_RUN_AS python PATH_TO_DIY_ALPR/src/diy-lpr.py >> PATH_TO_DIY_ALPR/work/diy-lpr.log 2>&1 &
+
+TODOs
+-----
+
+- versioned releases
+- proper make system for installation
+- proper config system (editing .py for config is pretty lame)
+- proper logging system (everything is going to STDOUT. should have multilevel file-based logging)
+- test/tweak for other Raspberry Pi hardware versions and other Camera versions
+- test a NOIR camera, possibly with an IR LED flash for capturing plates at night
+- look at improving OpenALPR performance. would be nice if it could keep up with the camera. or, just wait for the Raspberry Pi hardware to get faster
+- automatically push captured plates (and images?) to a cloud API endpoint
